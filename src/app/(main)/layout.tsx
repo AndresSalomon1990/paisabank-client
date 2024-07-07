@@ -1,13 +1,19 @@
 // External deps
 import React from "react";
 
+// Internal deps
+import BottomBar from "@/components/layout/BottomBar";
+
 interface Props {
   children: React.ReactNode;
 }
 
 function MainLayout({ children }: Readonly<Props>) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">{children}</main>
+    <main className="flex h-dvh flex-col items-center justify-between">
+      {children}
+      <BottomBar />
+    </main>
   );
 }
 

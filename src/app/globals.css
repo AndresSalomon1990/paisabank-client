@@ -95,3 +95,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Global class "icon" for icons */
+svg.icon {
+  * {
+    stroke: currentcolor;
+  }
+}

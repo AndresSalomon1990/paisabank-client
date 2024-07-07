@@ -53,6 +53,10 @@ function LoginContainer() {
         throw new Error(response.message);
       }
 
+      // ? Besides the function is not asyncronous it returns a promise so we need to await it.
+      // ? Otherwise the middleware acts first and redirects to login again.
+      await setToken(response.data.token);
+
       if (values.remember) {
         localStorage.setItem("email", JSON.stringify(values.email));
       } else {
@@ -63,8 +67,6 @@ function LoginContainer() {
         variant: "success",
         description: "Login exitoso",
       });
-
-      setToken(response.data.token);
 
       router.push(ROUTES.HOME.path);
     } catch (error: any) {
