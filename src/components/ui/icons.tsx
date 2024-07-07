@@ -10,12 +10,12 @@ import Search from "@/assets/icons/Search.svg";
 import Visa from "@/assets/icons/Visa.svg";
 
 export const Icons = {
-  loader: LoaderCircle,
-  logout: LogOut,
-  document: Document,
-  home: Home,
-  masterCard: MasterCard,
-  notification: Notification,
-  search: Search,
-  visa: Visa,
+  Loader: LoaderCircle,
+  Logout: LogOut,
+  Document: Document,
+  Home: Home,
+  MasterCard: MasterCard,
+  Notification: Notification,
+  Search: Search,
+  Visa: Visa,
 };
