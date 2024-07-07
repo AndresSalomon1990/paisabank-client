@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Encontrá todas tus cuentas en un solo lugar",
 };
 
-export default function RootLayout({
+function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -21,3 +21,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+export default RootLayout;
