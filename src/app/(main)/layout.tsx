@@ -10,7 +10,7 @@ interface Props {
 
 function MainLayout({ children }: Readonly<Props>) {
   return (
-    <main className="flex h-dvh flex-col items-center justify-between">
+    <main className="flex h-dvh w-full flex-col items-center justify-between">
       {children}
       <BottomBar />
     </main>
