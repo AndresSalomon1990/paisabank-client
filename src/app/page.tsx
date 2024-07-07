@@ -1,9 +1,11 @@
-function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>REDIRECT TO HOME</h1>
-    </main>
-  );
+// External deps
+import { redirect } from "next/navigation";
+
+// Internal deps
+import { ROUTES } from "@/lib/constants";
+
+function BasePage() {
+  return redirect(ROUTES.HOME.path);
 }
 
-export default Home;
+export default BasePage;
