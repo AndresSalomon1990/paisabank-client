@@ -1,5 +1,8 @@
-import React from "react";
+// Internal deps
+import LoginContainer from "@/containers/LoginContainer/LoginContainer";
 
-export default function LoginPage() {
-  return <div>LoginPage</div>;
+function LoginPage() {
+  return <LoginContainer />;
 }
+
+export default LoginPage;

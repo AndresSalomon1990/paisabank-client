@@ -82,6 +82,9 @@ const config = {
           DEFAULT: "hsl(var(--cash-out-movement))",
           foreground: "hsl(var(--cash-out-movement-foreground))",
         },
+        checkboxInactive: {
+          DEFAULT: "hsl(var(--checkbox-inactive))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

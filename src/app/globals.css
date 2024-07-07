@@ -52,6 +52,8 @@
     --cash-in-movement-foreground: 146.59 46.32% 62.75%;
     --cash-out-movement: 31.43 95.45% 91.37%;
     --cash-out-movement-foreground: 27.66 82.8% 63.53%;
+
+    --checkbox-inactive: 0 0% 85.88%;
   }
 
   .dark {
