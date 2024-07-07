@@ -3,6 +3,10 @@
 // External deps
 import { cookies } from "next/headers";
 import type { RequestError } from "@/types/global";
+import { redirect } from "next/navigation";
+
+// Internal deps
+import { ROUTES } from "./constants";
 
 export const fetchRequest = async <T>(
   url: string,
@@ -35,4 +39,10 @@ export const setToken = (token: string) => {
 
 export const removeToken = () => {
   cookies().delete("token");
+};
+
+export const logout = async () => {
+  await removeToken();
+
+  redirect(ROUTES.LOGIN.path);
 };

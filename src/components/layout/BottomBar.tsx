@@ -8,9 +8,20 @@ import { usePathname } from "next/navigation";
 import { Icons } from "../ui/icons";
 import { Button } from "../ui/button";
 import { ROUTES } from "@/lib/constants";
+import { logout } from "@/lib/serverActions";
+import { useToast } from "../ui/use-toast";
 
 function BottomBar() {
   const pathname = usePathname();
+  const { toast } = useToast();
+
+  const handleLogout = () => {
+    toast({
+      description: "Vuelve pronto :)",
+      variant: "paisabank",
+    });
+    logout();
+  };
 
   return (
     <nav className="h-86 z-10 flex w-screen items-center justify-between rounded-t-[24px] bg-white px-14 py-7">
@@ -28,8 +39,9 @@ function BottomBar() {
       </Link>
       <Button
         variant="outline"
-        className="border-0 bg-white text-iconInactive-foreground hover:bg-transparent"
+        className="hover:text-iconInactive- border-0 bg-white text-iconInactive-foreground hover:bg-transparent"
         size="icon"
+        onClick={handleLogout}
       >
         <Icons.Logout size={30} />
       </Button>
