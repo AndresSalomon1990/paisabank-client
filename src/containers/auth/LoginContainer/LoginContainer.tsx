@@ -1,6 +1,7 @@
 "use client";
 
 // External deps
+import { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -27,9 +28,19 @@ export type LoginFormFields = z.infer<typeof schema>;
 
 function LoginContainer() {
   const form = useForm<LoginFormFields>({ resolver: zodResolver(schema) });
-  const { handleSubmit, setError } = form;
+  const { handleSubmit, setError, setValue } = form;
   const router = useRouter();
   const { toast } = useToast();
+
+  useEffect(() => {
+    // Get email from localStorage on load
+    const email = localStorage.getItem("email");
+
+    if (email) {
+      setValue("email", JSON.parse(email));
+      setValue("remember", true);
+    }
+  }, []);
 
   const onSubmit: SubmitHandler<LoginFormFields> = async (values) => {
     try {
@@ -40,6 +51,12 @@ function LoginContainer() {
 
       if (!response.success) {
         throw new Error(response.message);
+      }
+
+      if (values.remember) {
+        localStorage.setItem("email", JSON.stringify(values.email));
+      } else {
+        localStorage.removeItem("email");
       }
 
       toast({
