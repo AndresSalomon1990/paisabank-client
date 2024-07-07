@@ -1,5 +1,5 @@
 // Internal deps
-import LoginContainer from "@/containers/LoginContainer/LoginContainer";
+import LoginContainer from "@/containers/auth/LoginContainer/LoginContainer";
 
 function LoginPage() {
   return <LoginContainer />;

@@ -1,7 +1,7 @@
 "use client";
 
 // Internal deps
-import LoginForm from "@/components/auth/LoginForm";
+import LoginForm from "@/components/auth/LoginForm/LoginForm";
 
 function LoginContainer() {
   return <LoginForm />;
