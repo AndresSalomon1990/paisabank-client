@@ -2,6 +2,7 @@
 
 // External deps
 import { cookies } from "next/headers";
+import type { RequestError } from "./types";
 
 export const fetchRequest = async <T>(
   url: string,
@@ -25,5 +26,13 @@ export const fetchRequest = async <T>(
     ...(revalidate && { next: { revalidate } }),
   });
 
-  return (await res.json()) as T;
+  return (await res.json()) as T & RequestError;
+};
+
+export const setToken = (token: string) => {
+  cookies().set("token", token);
+};
+
+export const removeToken = () => {
+  cookies().delete("token");
 };

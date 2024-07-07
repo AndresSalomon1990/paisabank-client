@@ -4,6 +4,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 
 // Internal deps
 import { Input } from "@/components/ui/input";
@@ -18,6 +19,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { loginService } from "@/api/auth/services";
+import { setToken } from "@/lib/serverActions";
+import { ROUTES } from "@/lib/constants";
 
 const schema = z.object({
   email: z
@@ -33,21 +37,52 @@ type FormFields = z.infer<typeof schema>;
 
 function LoginForm() {
   const form = useForm<FormFields>({ resolver: zodResolver(schema) });
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    setError,
+  } = form;
+  const router = useRouter();
 
-  const onSubmit: SubmitHandler<FormFields> = (values) => {
-    console.log(values);
+  const onSubmit: SubmitHandler<FormFields> = async (values) => {
+    try {
+      const response = await loginService({
+        email: values.email,
+        password: values.password,
+      });
+      console.log(response);
+      if (!response.success) {
+        throw new Error(response.message);
+      }
+
+      setToken(response.data.token);
+
+      router.push(ROUTES.HOME.path);
+    } catch (error: any) {
+      console.error(error);
+      if (error.message.includes("500")) {
+        setError("root", {
+          message: "Algo salió mal. Inténtalo nuevamente.",
+        });
+      } else {
+        setError("root", {
+          message: "Parece que alguno de tus datos es incorrecto.",
+        });
+      }
+    }
   };
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit)}
         className="flex h-full w-full flex-col justify-between"
       >
         <div className="grid gap-6">
           {/* Email */}
           <FormField
-            control={form.control}
+            control={control}
             name="email"
             render={({ field }) => (
               <FormItem>
@@ -68,7 +103,7 @@ function LoginForm() {
           />
           {/* Password */}
           <FormField
-            control={form.control}
+            control={control}
             name="password"
             render={({ field }) => (
               <FormItem>
@@ -90,7 +125,7 @@ function LoginForm() {
 
           {/* Remember me */}
           <FormField
-            control={form.control}
+            control={control}
             name="remember"
             render={({ field }) => (
               <FormItem className="flex items-center gap-2">
@@ -111,9 +146,18 @@ function LoginForm() {
             )}
           />
         </div>
-        <Button type="submit" className="bg-accent text-accent-foreground">
-          Ingresar
-        </Button>
+        <div className="flex flex-col">
+          {errors.root && (
+            <span className="mb-1 text-sm font-medium text-destructive">{errors.root.message}</span>
+          )}
+          <Button
+            type="submit"
+            className="bg-accent text-accent-foreground hover:bg-accent/90"
+            disabled={isSubmitting}
+          >
+            Ingresar
+          </Button>
+        </div>
       </form>
     </Form>
   );
