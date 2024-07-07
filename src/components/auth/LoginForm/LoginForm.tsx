@@ -22,6 +22,7 @@ import {
 import { loginService } from "@/api/auth/services";
 import { setToken } from "@/lib/serverActions";
 import { ROUTES } from "@/lib/constants";
+import { Icons } from "@/components/ui/icons";
 
 const schema = z.object({
   email: z
@@ -51,7 +52,7 @@ function LoginForm() {
         email: values.email,
         password: values.password,
       });
-      console.log(response);
+
       if (!response.success) {
         throw new Error(response.message);
       }
@@ -146,6 +147,7 @@ function LoginForm() {
             )}
           />
         </div>
+
         <div className="flex flex-col">
           {errors.root && (
             <span className="mb-1 text-sm font-medium text-destructive">{errors.root.message}</span>
@@ -155,7 +157,7 @@ function LoginForm() {
             className="bg-accent text-accent-foreground hover:bg-accent/90"
             disabled={isSubmitting}
           >
-            Ingresar
+            {isSubmitting ? <Icons.loader size={24} className="mr-2 animate-spin" /> : "Ingresar"}
           </Button>
         </div>
       </form>

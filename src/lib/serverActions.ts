@@ -2,7 +2,7 @@
 
 // External deps
 import { cookies } from "next/headers";
-import type { RequestError } from "./types";
+import type { RequestError } from "@/types/global";
 
 export const fetchRequest = async <T>(
   url: string,
