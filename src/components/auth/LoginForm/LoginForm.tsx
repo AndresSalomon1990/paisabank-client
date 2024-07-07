@@ -24,7 +24,7 @@ interface Props {
   onSubmit: () => void;
 }
 
-function LoginForm({ form, onSubmit }: Props) {
+function LoginForm({ form, onSubmit }: Readonly<Props>) {
   const {
     control,
     formState: { errors, isSubmitting },

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { poppins } from "./fonts";
 
 // Internal deps
+import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,7 +18,10 @@ function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }

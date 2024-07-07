@@ -11,6 +11,7 @@ import LoginForm from "@/components/auth/LoginForm/LoginForm";
 import { loginService } from "@/api/auth/services";
 import { setToken } from "@/lib/serverActions";
 import { ROUTES } from "@/lib/constants";
+import { useToast } from "@/components/ui/use-toast";
 
 const schema = z.object({
   email: z
@@ -28,6 +29,7 @@ function LoginContainer() {
   const form = useForm<LoginFormFields>({ resolver: zodResolver(schema) });
   const { handleSubmit, setError } = form;
   const router = useRouter();
+  const { toast } = useToast();
 
   const onSubmit: SubmitHandler<LoginFormFields> = async (values) => {
     try {
@@ -39,6 +41,11 @@ function LoginContainer() {
       if (!response.success) {
         throw new Error(response.message);
       }
+
+      toast({
+        variant: "success",
+        description: "Login exitoso",
+      });
 
       setToken(response.data.token);
 
