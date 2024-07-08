@@ -4,6 +4,7 @@ import { poppins } from "./fonts";
 
 // Internal deps
 import { Toaster } from "@/components/ui/toaster";
+import { cn } from "@/lib/utils";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={poppins.className}>
+      <body className={cn(poppins.className, "mx-auto max-w-lg")}>
         {children}
         <Toaster />
       </body>

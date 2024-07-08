@@ -54,6 +54,9 @@
     --cash-out-movement-foreground: 27.66 82.8% 63.53%;
 
     --checkbox-inactive: 0 0% 85.88%;
+
+    --currency-gradient-from: 225.26 93.44% 76.08%;
+    --currency-gradient-to: 225 90.91% 69.8%;
   }
 
   .dark {

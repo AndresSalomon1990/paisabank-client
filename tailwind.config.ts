@@ -85,6 +85,12 @@ const config = {
         checkboxInactive: {
           DEFAULT: "hsl(var(--checkbox-inactive))",
         },
+        currencyGradientFrom: {
+          DEFAULT: "hsl(var(--currency-gradient-from))",
+        },
+        currencyGradientTo: {
+          DEFAULT: "hsl(var(--currency-gradient-to))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
