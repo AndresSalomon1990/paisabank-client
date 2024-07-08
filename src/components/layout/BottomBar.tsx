@@ -20,6 +20,10 @@ function BottomBar() {
       description: "Vuelve pronto :)",
       variant: "paisabank",
     });
+
+    // Remove name from localStorage
+    localStorage.removeItem("name");
+
     logout();
   };
 

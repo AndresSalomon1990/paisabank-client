@@ -68,6 +68,8 @@ function LoginContainer() {
         description: "Login exitoso",
       });
 
+      localStorage.setItem("name", response.data.name);
+
       router.push(ROUTES.HOME.path);
     } catch (error: any) {
       console.error(error);
