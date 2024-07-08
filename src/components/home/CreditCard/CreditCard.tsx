@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
 
 interface Props {
-  isVisa: boolean;
+  isVisa?: boolean;
   currency: string;
   balance: number;
   lastDigits: number;
@@ -20,7 +20,7 @@ function CreditCard({
   expDate,
 }: Readonly<Props>) {
   return (
-    <Card className="flex w-full flex-col gap-2 rounded-[24px] bg-accent px-6 py-4 text-accent-foreground">
+    <Card className="flex h-48 w-full flex-col gap-2 rounded-[24px] bg-accent px-6 py-4 text-accent-foreground">
       <div className="flex w-full items-center justify-between">
         <span className="text-sm font-normal">Balance</span>
         {isVisa ? <Icons.Visa /> : <Icons.MasterCard />}
