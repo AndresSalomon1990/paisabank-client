@@ -29,13 +29,13 @@ export const fetchRequest = async <T>(
   }: { method: string; headers?: Record<string, string>; body?: Record<string, any> },
   revalidate: false | number = 0,
 ) => {
-  const token = getToken();
+  const token = await getToken();
 
   const res = await fetch(url, {
     method,
     headers: {
       "Content-Type": "application/json",
-      token: `${token}`,
+      ...(token && { token: `${token}` }),
       ...headers,
     },
     ...(body && { body: JSON.stringify(body) }),

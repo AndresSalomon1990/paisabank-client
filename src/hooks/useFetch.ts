@@ -9,6 +9,13 @@ interface Response<T> {
   message?: string;
 }
 
+interface UseFetch<T = any> {
+  response: Response<T>;
+  isPending: boolean;
+  error: any;
+  fetchData: () => Promise<void>;
+}
+
 /*
   This hooks was created to call a service from client side with a server action.
   It handles pending and error states.
@@ -16,12 +23,12 @@ interface Response<T> {
   automaticFetchData: is used to make the first call by the hook.
   If it is false, you have to do it manually
 */
-const useAdapter = <T, P = undefined>(
+const useFetch = <T, P = undefined>(
   serverAction: (params?: any) => Promise<Response<T>>,
   params?: P,
   automaticFetchData: boolean = true,
   initialIsPendingState: boolean = true,
-): UseAdapter<T> => {
+): UseFetch<T> => {
   const [response, setResponse] = useState<any>(null);
   const [isPending, setIsPending] = useState<boolean>(initialIsPendingState);
   const [error, setError] = useState<string>("");
@@ -61,11 +68,4 @@ const useAdapter = <T, P = undefined>(
   };
 };
 
-export default useAdapter;
-
-interface UseAdapter<T = any> {
-  response: Response<T>;
-  isPending: boolean;
-  error: any;
-  fetchData: () => Promise<void>;
-}
+export default useFetch;
