@@ -28,11 +28,16 @@ const items = [
 
 function HomePage() {
   return (
-    <div className="flex w-full flex-col gap-8 px-6 pt-9">
-      <TopBar />
-      <CreditCardsCarousel items={items} />
+    <div className="flex w-full flex-col gap-8 pt-9">
+      <section className="px-6">
+        <TopBar />
+      </section>
 
-      <section className="flex w-full flex-col gap-6">
+      <section className="ps-6">
+        <CreditCardsCarousel items={items} />
+      </section>
+
+      <section className="flex w-full flex-col gap-6 px-6">
         <h4 className="text-xl font-medium">Últimos movimientos</h4>
         {/* 
           Dynamic height calculation for scroll container:
