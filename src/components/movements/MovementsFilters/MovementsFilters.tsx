@@ -1,5 +1,12 @@
+// Internal deps
+import SearchInput from "./SearchInput/SearchInput";
+
 function MovementsFilters() {
-  return <div>MovementsFilters</div>;
+  return (
+    <div>
+      <SearchInput />
+    </div>
+  );
 }
 
 export default MovementsFilters;

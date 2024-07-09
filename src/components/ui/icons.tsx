@@ -1,12 +1,11 @@
 // Extnerl deps
-import { LoaderCircle, LogOut } from "lucide-react";
+import { LoaderCircle, LogOut, Search } from "lucide-react";
 
 // Internal deps
 import Document from "@/assets/icons/Document.svg";
 import Home from "@/assets/icons/Home.svg";
 import MasterCard from "@/assets/icons/MasterCard.svg";
 import Notification from "@/assets/icons/Notification.svg";
-import Search from "@/assets/icons/Search.svg";
 import Visa from "@/assets/icons/Visa.svg";
 import Subscription from "@/assets/icons/sus-icon.svg";
 import CashIn from "@/assets/icons/cash-in-icon.svg";
