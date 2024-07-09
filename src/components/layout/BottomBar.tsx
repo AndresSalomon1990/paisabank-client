@@ -28,7 +28,7 @@ function BottomBar() {
   };
 
   return (
-    <nav className="h-86 z-10 flex w-full items-center justify-between rounded-t-[24px] bg-white px-14 py-7">
+    <nav className="h-86 z-10 flex w-full items-center justify-between rounded-t-[24px] bg-white px-14 py-7 drop-shadow-2xl">
       <Link
         href={ROUTES.HOME.path}
         className={`${pathname === ROUTES.HOME.path ? "text-iconActive-foreground" : "text-iconInactive-foreground"}`}

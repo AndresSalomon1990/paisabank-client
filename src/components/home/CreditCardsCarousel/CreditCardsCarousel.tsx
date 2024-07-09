@@ -10,7 +10,7 @@ interface Props {
 
 function CreditCardsCarousel({ items }: Readonly<Props>) {
   return (
-    <Carousel>
+    <Carousel className="drop-shadow-xl">
       <CarouselContent>
         {items.map((item, index) => (
           <CarouselItem key={`${index}-${new Date().getTime()}`} className="basis-11/12">
