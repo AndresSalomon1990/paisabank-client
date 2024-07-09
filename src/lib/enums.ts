@@ -3,3 +3,8 @@ export const enum MOVEMENTS_TYPES {
   CASH_IN = "CASH_IN",
   CASH_OUT = "CASH_OUT",
 }
+
+export const enum ISSUERS {
+  VISA = "VISA",
+  MASTERCARD = "MASTERCARD",
+}

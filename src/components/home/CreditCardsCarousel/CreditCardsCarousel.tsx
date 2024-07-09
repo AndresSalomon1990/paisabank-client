@@ -1,20 +1,17 @@
-// External deps
-import type { ReactElement } from "react";
-
 // Internal deps
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import CreditCard from "../CreditCard/CreditCard";
+import { getCardsService } from "@/api/cards/services";
 
-interface Props {
-  items: ReactElement[];
-}
+async function CreditCardsCarousel() {
+  const cards = await getCardsService();
 
-function CreditCardsCarousel({ items }: Readonly<Props>) {
   return (
     <Carousel className="drop-shadow-xl">
       <CarouselContent>
-        {items.map((item, index) => (
-          <CarouselItem key={`${index}-${new Date().getTime()}`} className="basis-11/12">
-            {item}
+        {cards.data.map((card) => (
+          <CarouselItem key={card.id} className="basis-11/12">
+            <CreditCard card={card} />
           </CarouselItem>
         ))}
       </CarouselContent>

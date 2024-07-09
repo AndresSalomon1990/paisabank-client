@@ -1,8 +1,11 @@
+// Internal deps
+import { ISSUERS } from "@/lib/enums";
+
 export type Card = {
   id: number;
-  issuer: string;
+  issuer: ISSUERS;
   name: string;
-  expDate: string;
+  expirationDate: string;
   lastDigits: number;
   balance: number;
   currency: string;
