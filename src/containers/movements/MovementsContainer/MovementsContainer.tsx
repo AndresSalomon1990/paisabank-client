@@ -36,7 +36,10 @@ function MovementsContainer() {
   return (
     <FormProvider {...form}>
       <MovementsFilters />
-      <MovementsCards />
+
+      <section className="px-6">
+        <MovementsCards />
+      </section>
     </FormProvider>
   );
 }
