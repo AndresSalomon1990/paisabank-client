@@ -5,11 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // Internal deps
-import { Icons } from "../ui/icons";
-import { Button } from "../ui/button";
+import { Icons } from "../../ui/icons";
+import { Button } from "../../ui/button";
 import { ROUTES } from "@/lib/constants";
 import { logout } from "@/lib/serverActions";
-import { useToast } from "../ui/use-toast";
+import { useToast } from "../../ui/use-toast";
 
 function BottomBar() {
   const pathname = usePathname();

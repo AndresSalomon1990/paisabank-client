@@ -2,7 +2,7 @@
 import React from "react";
 
 // Internal deps
-import BottomBar from "@/components/layout/BottomBar";
+import BottomBar from "@/components/layout/BottomBar/BottomBar";
 
 interface Props {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ interface Props {
 
 function MainLayout({ children }: Readonly<Props>) {
   return (
-    <main className="flex h-dvh max-h-dvh w-full flex-col items-center justify-between">
+    <main className="flex h-dvh max-h-dvh w-full flex-col items-center justify-between overflow-y-hidden">
       {children}
       <BottomBar />
     </main>

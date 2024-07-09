@@ -19,7 +19,7 @@ function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={cn(poppins.className, "mx-auto max-w-lg")}>
+      <body className={cn(poppins.className, "mx-auto h-dvh max-h-dvh max-w-lg overflow-y-hidden")}>
         {children}
         <Toaster />
       </body>
