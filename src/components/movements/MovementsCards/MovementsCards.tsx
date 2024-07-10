@@ -1,7 +1,6 @@
 // Internal deps
 import { ScrollArea } from "@/components/ui/scroll-area";
-import MovementCard from "@/components/general/MovementCard/MovementCard";
-import { MOVEMENTS_TYPES } from "@/lib/enums";
+// import MovementCard from "@/components/general/MovementCard/MovementCard";
 
 function MovementsCards() {
   return (
@@ -15,14 +14,7 @@ function MovementsCards() {
           Padding top: 1.5rem
           Gaps (x3): 4rem
         */}
-      <div className="p- flex h-full flex-col gap-4">
-        <MovementCard type={MOVEMENTS_TYPES.SUS} amount={123} title="Recibo importante" />
-        <MovementCard type={MOVEMENTS_TYPES.CASH_IN} amount={123} title="Recibo importante" />
-        <MovementCard type={MOVEMENTS_TYPES.CASH_OUT} amount={123} title="Recibo importante" />
-        <MovementCard type={MOVEMENTS_TYPES.CASH_OUT} amount={123} title="Recibo importante" />
-        <MovementCard type={MOVEMENTS_TYPES.CASH_OUT} amount={123} title="Recibo importante" />
-        <MovementCard type={MOVEMENTS_TYPES.CASH_OUT} amount={123} title="Recibo importante" />
-      </div>
+      <div className="p- flex h-full flex-col gap-4">{/* Add cards */}</div>
     </ScrollArea>
   );
 }

@@ -2,17 +2,18 @@
 import { Card } from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
 import { MOVEMENTS_TYPES } from "@/lib/enums";
+import type { Movement } from "@/api/movements/types";
 
 interface Props {
-  type: MOVEMENTS_TYPES;
-  amount: number;
-  title: string;
+  movement: Movement;
 }
 
-function MovementCard({ type, amount, title }: Readonly<Props>) {
+function MovementCard({ movement }: Readonly<Props>) {
+  const amountFormatted = new Intl.NumberFormat("es-AR").format(movement.amount);
+
   // Grab icon and class based on movement type
   const getStyles = () => {
-    switch (type) {
+    switch (movement.transactionType) {
       case MOVEMENTS_TYPES.SUS:
         return {
           icon: <Icons.Subscription />,
@@ -44,13 +45,15 @@ function MovementCard({ type, amount, title }: Readonly<Props>) {
           {getStyles().icon}
         </div>
         <div className="flex flex-col gap-1">
-          <span className="text-base font-medium">{title}</span>
+          <span className="text-base font-medium">{movement.title}</span>
           <span className="text-xs font-normal text-muted-foreground">
             Pago {getStyles().label}
           </span>
         </div>
       </div>
-      <span className={`text-sm font-normal text-${getStyles().class}-foreground`}>${amount}</span>
+      <span className={`text-sm font-normal text-${getStyles().class}-foreground`}>
+        ${amountFormatted}
+      </span>
     </Card>
   );
 }
