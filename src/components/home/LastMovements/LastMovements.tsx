@@ -10,12 +10,12 @@ async function LastMovements() {
 
   return (
     <ErrorHandler errorMessage={response.message}>
-      <ScrollArea className="h-[calc(100dvh-86px-56px-12rem-24px-2.25rem-5.5rem)]">
+      <ScrollArea className="h-[calc(100dvh-86px-56px-13rem-24px-2.25rem-5.5rem)]">
         {/* 
           Dynamic height calculation for scroll container:
           BottomBar: 86px
           TopBar: 56px
-          CardsCarousel: 12rem
+          CardsCarousel: 13rem
           Title: 24px
           Padding top: 2.25rem
           Gaps (x3): 5.5rem

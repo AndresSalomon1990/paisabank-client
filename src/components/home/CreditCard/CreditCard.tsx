@@ -13,7 +13,9 @@ function CreditCard({ card }: Readonly<Props>) {
   const balanceFormatted = new Intl.NumberFormat("es-AR").format(card.balance);
 
   return (
-    <CardComponent className="flex h-48 w-full flex-col gap-2 rounded-[24px] bg-accent px-6 py-4 text-accent-foreground">
+    <CardComponent
+      className={`flex h-52 w-full flex-col gap-2 rounded-[24px] ${isVisa ? "bg-yellow-600" : "bg-accent"} px-6 py-4 text-accent-foreground`}
+    >
       <div className="flex w-full items-center justify-between">
         <span className="text-sm font-normal">Balance</span>
         {isVisa ? <Icons.Visa /> : <Icons.MasterCard />}

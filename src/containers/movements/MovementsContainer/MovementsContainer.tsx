@@ -13,7 +13,7 @@ import MovementsCardsSkeleton from "@/components/movements/MovementsCards/Moveme
 import useFetch from "@/hooks/useFetch";
 import { getAllMovementsServiceAdapter } from "@/adapters/movements/adapters";
 import type { Movement, AllMovementsServiceGetParams } from "@/api/movements/types";
-import { MOVEMENTS_TYPES } from "@/lib/enums";
+import { QUICK_FILTER_OPTIONS } from "@/lib/constants";
 import ErrorHandler from "@/components/general/ErrorHandler/ErrorHandler";
 
 const schema = z.object({
@@ -28,7 +28,7 @@ function MovementsContainer() {
     resolver: zodResolver(schema),
     defaultValues: {
       searchValue: "",
-      movementType: "",
+      movementType: QUICK_FILTER_OPTIONS[0].value,
     },
   });
   const { response, isPending, fetchData, error } = useFetch<
