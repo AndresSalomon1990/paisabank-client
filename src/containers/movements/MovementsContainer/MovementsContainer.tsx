@@ -1,6 +1,7 @@
 "use client";
 
 // External deps
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,10 +9,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 // Internal deps
 import MovementsFilters from "@/components/movements/MovementsFilters/MovementsFilters";
 import MovementsCards from "@/components/movements/MovementsCards/MovementsCards";
-// import useFetch from "@/hooks/useFetch";
-// import { getAllMovementsService } from "@/api/movements/services";
-// import type { Movement, AllMovementsServiceGetParams } from "@/api/movements/types";
-// import { MOVEMENTS_TYPES } from "@/lib/enums";
+import MovementsCardsSkeleton from "@/components/movements/MovementsCards/MovementsCardsSkeleton";
+import useFetch from "@/hooks/useFetch";
+import { getAllMovementsServiceAdapter } from "@/adapters/movements/adapters";
+import type { Movement, AllMovementsServiceGetParams } from "@/api/movements/types";
+import { MOVEMENTS_TYPES } from "@/lib/enums";
+import ErrorHandler from "@/components/general/ErrorHandler/ErrorHandler";
 
 const schema = z.object({
   searchValue: z.string().optional(),
@@ -21,24 +24,40 @@ const schema = z.object({
 export type MovementsSchema = z.infer<typeof schema>;
 
 function MovementsContainer() {
-  const form = useForm({ resolver: zodResolver(schema) });
-  // const { response, isPending, fetchData, error } = useFetch<
-  //   Movement,
-  //   AllMovementsServiceGetParams
-  // >(getAllMovementsService, {
-  //   filter: MOVEMENTS_TYPES.SUS,
-  // });
+  const form = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      searchValue: "",
+      movementType: "",
+    },
+  });
+  const { response, isPending, fetchData, error } = useFetch<
+    Movement,
+    AllMovementsServiceGetParams
+  >(
+    getAllMovementsServiceAdapter,
+    {
+      filter: form.watch().movementType,
+    },
+    false,
+  );
 
-  // console.log(response);
-  // console.log(isPending);
-  // console.log(error);
+  useEffect(() => {
+    fetchData();
+  }, [form.watch().movementType]);
 
   return (
     <FormProvider {...form}>
       <MovementsFilters />
 
       <section className="px-6">
-        <MovementsCards />
+        <ErrorHandler errorMessage={error}>
+          {isPending ? (
+            <MovementsCardsSkeleton />
+          ) : (
+            <MovementsCards movements={response.data ?? []} />
+          )}
+        </ErrorHandler>
       </section>
     </FormProvider>
   );
