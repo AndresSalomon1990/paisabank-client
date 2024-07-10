@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    --background: 220 33% 98%; /* Custom */
-    --foreground: 215 24% 26%; /* Custom */
+    --background: 220 33.33% 98.24%; /* Custom */
+    --foreground: 214.55 24.44% 26.47%; /* Custom */
 
     --card: 0 0% 100%;
-    --card-foreground: 211 12% 43%; /* Custom */
+    --card-foreground: 211.11 12.22% 43.33%; /* Custom */
 
     --popover: 0 0% 100%;
     --popover-foreground: 20 14.3% 4.1%;
@@ -20,9 +20,9 @@
     --secondary-foreground: 24 9.8% 10%;
 
     --muted: 60 4.8% 95.9%;
-    --muted-foreground: 0 0% 67%; /* Custom */
+    --muted-foreground: 0 0% 66.67%; /* Custom */
 
-    --accent: 217 100% 47%; /* Custom */
+    --accent: 216.81 100% 46.67%; /* Custom */
     --accent-foreground: 0 0% 100%; /* Custom */
 
     --destructive: 0 84.2% 60.2%;
@@ -35,23 +35,28 @@
     --radius: 0.5rem;
 
     /* Customs */
-    --subtitle-foreground: 218 15% 51%;
+    --subtitle-foreground: 218.33 14.52% 51.37%;
 
-    --icon-active-foreground: 225 91% 70%;
-    --icon-inactive-foreground: 270 56% 13%;
+    --icon-active-foreground: 225 90.91% 69.8%;
+    --icon-inactive-foreground: 270 56.25% 12.55%;
 
-    --pill-active: 0 0% 44%;
+    --pill-active: 0 0% 43.92%;
     --pill-active-foreground: 0 0% 100%;
 
     --pill-inactive: 0 0% 100%;
     --pill-inactive-foreground: 0 0% 0%;
 
-    --sus-movement: 273 100% 95%;
-    --sus-movement-foreground: 277 100% 64%;
-    --cash-in-movement: 147, 100%, 95%;
-    --cash-in-movement-foreground: 147 46% 63%;
-    --cash-out-movement: 31 95% 91%;
-    --cash-out-movement-foreground: 28 83% 64%;
+    --sus-movement: 273.33 100% 94.71%;
+    --sus-movement-foreground: 277.3 100% 63.73%;
+    --cash-in-movement: 146.67 100% 94.71%;
+    --cash-in-movement-foreground: 146.59 46.32% 62.75%;
+    --cash-out-movement: 31.43 95.45% 91.37%;
+    --cash-out-movement-foreground: 27.66 82.8% 63.53%;
+
+    --checkbox-inactive: 0 0% 85.88%;
+
+    --currency-gradient-from: 225.26 93.44% 76.08%;
+    --currency-gradient-to: 225 90.91% 69.8%;
   }
 
   .dark {
@@ -91,5 +96,12 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Global class "icon" for icons */
+svg.icon {
+  * {
+    stroke: currentcolor;
   }
 }

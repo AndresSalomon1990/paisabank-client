@@ -1,9 +1,11 @@
-const Home = () => {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>PAISABANK</h1>
-    </main>
-  );
-};
+// External deps
+import { redirect } from "next/navigation";
 
-export default Home;
+// Internal deps
+import { ROUTES } from "@/lib/constants";
+
+function BasePage() {
+  return redirect(ROUTES.HOME.path);
+}
+
+export default BasePage;

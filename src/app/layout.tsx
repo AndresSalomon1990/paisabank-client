@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { poppins } from "./fonts";
 
 // Internal deps
+import { Toaster } from "@/components/ui/toaster";
+import { cn } from "@/lib/utils";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,14 +12,19 @@ export const metadata: Metadata = {
   description: "Encontrá todas tus cuentas en un solo lugar",
 };
 
-export default function RootLayout({
+function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="es">
-      <body className={poppins.className}>{children}</body>
+      <body className={cn(poppins.className, "mx-auto h-dvh max-h-dvh max-w-md overflow-y-hidden")}>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }
+
+export default RootLayout;
