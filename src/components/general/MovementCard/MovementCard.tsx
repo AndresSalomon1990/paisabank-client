@@ -17,20 +17,23 @@ function MovementCard({ movement }: Readonly<Props>) {
       case MOVEMENTS_TYPES.SUS:
         return {
           icon: <Icons.Subscription />,
-          class: "susMovement",
+          bgClass: "bg-susMovement",
+          foregroundClass: "text-susMovement-foreground",
           label: "de suscripción",
         };
       case MOVEMENTS_TYPES.CASH_IN:
         return {
           icon: <Icons.CashIn />,
-          class: "cashInMovement",
+          bgClass: "bg-cashInMovement",
+          foregroundClass: "text-cashInMovement-foreground",
           label: "recibido",
         };
 
       default:
         return {
           icon: <Icons.CashOut />,
-          class: "cashOutMovement",
+          bgClass: "bg-cashOutMovement",
+          foregroundClass: "text-cashOutMovement-foreground",
           label: "enviado",
         };
     }
@@ -40,7 +43,7 @@ function MovementCard({ movement }: Readonly<Props>) {
     <Card className="flex w-full items-center justify-between rounded-2xl py-6 pe-[18px] ps-4">
       <div className="flex gap-4">
         <div
-          className={`flex h-11 w-11 items-center justify-center rounded-xl bg-${getStyles().class}`}
+          className={`flex h-11 w-11 items-center justify-center rounded-xl ${getStyles().bgClass}`}
         >
           {getStyles().icon}
         </div>
@@ -51,7 +54,7 @@ function MovementCard({ movement }: Readonly<Props>) {
           </span>
         </div>
       </div>
-      <span className={`text-sm font-normal text-${getStyles().class}-foreground`}>
+      <span className={`text-sm font-medium ${getStyles().foregroundClass}`}>
         ${amountFormatted}
       </span>
     </Card>
